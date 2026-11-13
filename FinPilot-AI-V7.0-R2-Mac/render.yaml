@@ -1,0 +1,64 @@
+services:
+  - type: web
+    name: finpilot-r2-live-demo-api
+    runtime: python
+    # Always-on competition demo. Creating this Blueprint selects paid compute;
+    # do not deploy it until the account owner confirms the current price.
+    plan: 0.5c-512mb
+    autoDeployTrigger: off
+    buildCommand: pip install -r backend/requirements.lock
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: FINPILOT_SKIP_DOTENV
+        value: "true"
+      - key: FINPILOT_PREVIEW_FIXTURE_MODE
+        value: "false"
+      - key: FINPILOT_GEMINI_ENABLED
+        value: "true"
+      - key: FINPILOT_PREVIEW_AUTH_REQUIRED
+        value: "false"
+      - key: FINPILOT_DEMO_ACCESS_ENABLED
+        value: "true"
+      - key: FINPILOT_DEMO_SESSION_SECRET
+        sync: false
+      - key: FINPILOT_CORS_ORIGINS
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash-lite
+      - key: FINPILOT_DATA_DIR
+        value: /var/data/finpilot-demo
+      - key: FINPILOT_DEMO_SESSION_TTL_SECONDS
+        value: "14400"
+      - key: FINPILOT_DEMO_SESSION_ISSUE_LIMIT_PER_MINUTE
+        value: "8"
+      - key: FINPILOT_RATE_LIMIT_PER_MINUTE
+        value: "40"
+      - key: FINPILOT_SYSTEM_RATE_LIMIT_PER_MINUTE
+        value: "240"
+      - key: FINPILOT_ASSISTANT_MAX_CONCURRENT
+        value: "4"
+      - key: FINPILOT_ASSISTANT_MAX_CONCURRENT_PER_VISITOR
+        value: "1"
+      - key: FINPILOT_RESEARCH_MAX_CONCURRENT
+        value: "2"
+      - key: FINPILOT_RESEARCH_MAX_CONCURRENT_PER_VISITOR
+        value: "1"
+      - key: FINPILOT_DAILY_GEMINI_CALL_LIMIT
+        value: "30"
+      - key: FINPILOT_DAILY_GEMINI_TOKEN_LIMIT
+        value: "300000"
+      - key: FINPILOT_VISITOR_DAILY_GEMINI_CALL_LIMIT
+        value: "6"
+      - key: FINPILOT_VISITOR_DAILY_GEMINI_TOKEN_LIMIT
+        value: "60000"
+      - key: SHIOAJI_ENABLED
+        value: "false"
+    disk:
+      name: finpilot-demo-data
+      mountPath: /var/data
+      sizeGB: 1

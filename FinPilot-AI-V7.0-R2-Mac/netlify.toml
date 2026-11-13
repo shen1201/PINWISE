@@ -1,0 +1,6 @@
+[build]
+  command = "./scripts/build_netlify_live.sh"
+  publish = "deploy/netlify"
+
+[build.environment]
+  FINPILOT_LIVE_DEMO_REQUIRED = "true"

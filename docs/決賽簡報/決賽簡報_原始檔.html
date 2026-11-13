@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>PINWISE 決賽簡報</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  @page { size: 7.5in 10in; margin: 0; }
+  :root{--navy:#0F1424;--ink:#1B2233;--muted:#5D6575;--line:#E3E6EC;--card:#F3F4F7;--gold:#F2B84B;--gold-d:#C98A12;--green:#2E8B57;--mauve:#8A6A8E;--red:#C0392B}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:7.5in;height:10in;position:relative;overflow:hidden;page-break-after:always;background:#fff}
+  .head{background:var(--navy);padding:22px 40px 18px;border-bottom:6px solid var(--gold)}
+  .kicker{color:var(--gold);font-weight:700;font-size:10.5px;letter-spacing:.5px}
+  .head h1{color:#fff;font-size:25px;font-weight:900;margin:5px 0 6px;letter-spacing:.5px}
+  .head p{color:#AEB4C2;font-size:10.5px}
+  .body{padding:18px 40px 0;zoom:var(--z,1.2)}
+  .foot{position:absolute;left:40px;right:40px;bottom:20px;display:flex;justify-content:space-between;font-size:8.5px;color:var(--muted)}
+  h2{font-size:13px;font-weight:900;margin:14px 0 7px}
+  h2:first-child{margin-top:0}
+  p,li{font-size:10px;line-height:1.6}
+  .muted{color:var(--muted)}
+  .small{font-size:8.5px}
+  table{width:100%;border-collapse:collapse;font-size:9.2px;line-height:1.45}
+  th{background:var(--navy);color:#fff;text-align:left;font-weight:700;padding:5px 7px}
+  td{border-bottom:1px solid var(--line);padding:4.5px 7px;vertical-align:top}
+  tr:nth-child(even) td{background:#FAFAFB}
+  td.k{font-weight:700;white-space:nowrap}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 13px;position:relative}
+  .card.bar{border-left:6px solid var(--gold)}
+  .card.dark{border-left:6px solid var(--navy)}
+  .card h3{font-size:11px;font-weight:900;margin-bottom:4px}
+  .card p{font-size:9.5px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .stat{background:var(--navy);color:#fff;border-radius:9px;padding:11px 8px;text-align:center}
+  .stat b{display:block;color:var(--gold);font-size:22px;font-weight:900;line-height:1.15}
+  .stat span{font-size:8.8px;color:#D5D9E2;line-height:1.35;display:block;margin-top:3px}
+  .tag{display:inline-block;font-size:8px;font-weight:700;padding:1px 7px;border-radius:9px;color:#fff;vertical-align:1px}
+  .t-done{background:var(--green)}.t-part{background:var(--gold-d)}.t-plan{background:var(--mauve)}.t-new{background:#D9534F}
+  .flow{display:flex;align-items:stretch;gap:5px}
+  .flow .step{flex:1;background:#FBF8F1;border:1.5px solid #D9A441;border-radius:8px;padding:7px 6px;text-align:center}
+  .flow .step.ai{background:#F6F0F7;border-color:var(--mauve)}
+  .flow .step.user{background:#EEF4FB;border-color:#4A78B8}
+  .flow .step b{display:block;font-size:9.5px;margin-bottom:2px}
+  .flow .step span{font-size:8px;color:var(--muted);line-height:1.35;display:block}
+  .flow.g9{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .flow .arr{align-self:center;color:#8A8F99;font-size:12px}
+  .pill{display:inline-block;font-size:8px;padding:1px 6px;border-radius:8px;margin-top:3px;font-weight:700}
+  .p-user{background:#4A78B8;color:#fff}.p-ai{background:var(--mauve);color:#fff}.p-code{background:#D9A441;color:#fff}
+  img.fig{width:100%;display:block;border-radius:6px}
+  .hl{background:#FFF4D6;padding:0 3px;border-radius:3px}
+  .todo{background:#FFE9E6;color:#B23A2A;font-weight:700;padding:0 4px;border-radius:3px}
+  .ref{color:var(--gold-d);font-weight:700;white-space:nowrap}
+  ul{padding-left:15px}
+  .bars .row{display:grid;grid-template-columns:118px 1fr 26px;align-items:center;gap:8px;margin:5px 0;font-size:9.5px}
+  .bars .b{height:17px;background:var(--gold);border-radius:2px}
+  .bars .n{font-weight:900;font-size:9.5px}
+  /* cover */
+  .cover{background:var(--navy);color:#fff;padding:56px 50px}
+  .cover img{width:205px;mix-blend-mode:lighten}
+  .cover h1{font-size:46px;font-weight:900;margin:34px 0 6px;letter-spacing:1px}
+  .cover h2{font-size:21px;font-weight:900;margin:0 0 14px;color:#fff}
+  .cover .slogan{color:var(--gold);font-size:13px;letter-spacing:1px}
+  .cover .rule{height:4px;background:var(--gold);margin:30px 0 18px;border-radius:2px}
+  .cover .lead{font-size:13px;line-height:1.85;color:#E8EAF0}
+  .cover .new{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .cover .new div{border:1px solid #2E3650;border-radius:9px;padding:12px 14px;font-size:11px;color:#D5D9E2;line-height:1.5}
+  .cover .new b{color:var(--gold);display:block;font-size:12px;margin-bottom:3px}
+  .cover .meta{position:absolute;left:50px;bottom:62px;font-size:10px;color:#C5CAD6;line-height:1.6}
+  .cover .fine{position:absolute;left:50px;bottom:34px;font-size:8.5px;color:#7F879A}
+</style>
+</head>
+<body>
+
+<!-- 1 封面 -->
+<section class="page cover">
+  <img src="img/p1_0.png" alt="PINWISE">
+  <h1>PINWISE</h1>
+  <h2>投資情報與智慧選股 AI Agent</h2>
+  <div class="slogan">精準洞察 ・ 可驗證研究 ・ 理性決策</div>
+  <div class="rule"></div>
+  <p class="lead">新手缺的不是資訊，而是看懂與判斷的能力。<br>
+  PINWISE 不替你決定買哪一檔，而是讓每個數字看得懂、查得到、算得出來：<br>
+  AI 負責理解需求與白話解說，數字與篩選由程式依官方資料計算，買不買由使用者自己決定。</p>
+  <div class="new">
+    <div><b>決賽版重點 1｜看得到的 Agent 互動</b>研究前確認、偏好個人化、可暫停取消、三段回饋</div>
+    <div><b>決賽版重點 2｜治理與即時性說清楚</b>訪客隔離、個資遮蔽、資料新鮮度一覽</div>
+    <div><b>決賽版重點 3｜可擴散</b>ESG 專區以獨立模組加入；公開網址部署</div>
+    <div><b>決賽版重點 4｜真實實測</b>30 次研究：中位數 9.7 秒、5,068 tokens</div>
+  </div>
+  <div class="meta">NAPAI Agentic AI 校園落地創新應用競賽 2026<br>B 組・題目一：場域指定命題組｜決賽簡報</div>
+  <div class="fine">AI 投資研究輔助，不是自動下單或保證獲利工具｜依賽事規定匿名</div>
+</section>
+
+<!-- 2 初賽回饋 -> 決賽改善 -->
+<section class="page">
+  <div class="head"><div class="kicker">01 / UPDATE</div><h1>從初賽回饋到決賽改善</h1><p>評審指出「看不到的地方」，決賽逐項補上並可在 Demo 中驗證</p></div>
+  <div class="body" style="--z:1.45">
+    <table>
+      <tr><th style="width:24%">初賽評審意見</th><th>決賽版做法</th><th style="width:9%">見頁</th></tr>
+      <tr><td class="k">較沒看到 Agent 與使用者的互動</td><td>研究前跳出「我理解你想研究…」讓使用者確認；6 題偏好問卷，結果標示「已參考你的偏好」；研究可暫停／繼續／取消；每則回答可給「有用／還好／很糟」回饋；助手能接續上一題追問</td><td class="ref">P7</td></tr>
+      <tr><td class="k">安全治理沒提到</td><td>公開展示改為訪客隔離（每位訪客獨立工作區與短效憑證）；回饋文字存檔前自動遮蔽 email／手機／身分證；研究前人工確認；Gemini 額度與限流；全程 trace</td><td class="ref">P11</td></tr>
+      <tr><td class="k">資料即時性處理方式未提及</td><td>整理每個來源的更新頻率、快取時間與畫面標示；行情一律顯示資料日期並註明「非即時」；追蹤股票在網頁開啟時每 10 分鐘檢查一次</td><td class="ref">P9</td></tr>
+      <tr><td class="k">可擴散未提及</td><td>ESG 專區以獨立資料模組加入，既有 Agent 不需修改；ETF 成份股接上 8 家投信約 113 檔；以公開網址部署供試用（Level 3）</td><td class="ref">P14</td></tr>
+      <tr><td class="k">驗證、token 花費（加分）</td><td>以 30 次真實研究量測：完成者中位數 9.7 秒、5,068 tokens；後端自動化測試由 153 項增至 227 項</td><td class="ref">P12</td></tr>
+      <tr><td class="k">安全與治理可再強化</td><td>Gemini 500／503 自動重試一次，429 不重試；失敗一律明確告知，不以假答案頂替</td><td class="ref">P11</td></tr>
+    </table>
+    <h2>場域回饋也進入改善循環</h2>
+    <div class="grid3">
+      <div class="stat"><b>28</b><span>份問卷開放題回覆<br>歸納為 8 類需求</span></div>
+      <div class="stat"><b>3 / 8</b><span>類已完成<br>新手教學、圖表、目標試算</span></div>
+      <div class="stat"><b>5 / 8</b><span>類部分完成<br>未完成者多為刻意不做</span></div>
+    </div>
+    <p class="muted small" style="margin-top:6px">＊「刻意不做」：合理價格、進場時機、漲跌預測，與「不替使用者決定」的定位一致，詳見 P13。</p>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>2 / 15</span></div>
+</section>
+
+<!-- 3 問題 -->
+<section class="page">
+  <div class="head"><div class="kicker">02 / PROBLEM</div><h1>目標使用者與場域痛點</h1><p>台股新手面對大量分散資訊，難以判斷意義與可靠性</p></div>
+  <div class="body" style="--z:1.45">
+    <div class="card bar"><h3>目標使用者</h3><p>關注台股個股、需要決策依據而非單純報價的新手個人投資人（問卷 28 份：大學生 15、社會新鮮人 11、其他 2；投資經驗 3 年內占 25 份）。</p></div>
+    <div class="grid3" style="margin-top:9px">
+      <div class="card bar"><h3>術語門檻高</h3><p>EPS、本益比、法人買賣超等概念不易理解。</p></div>
+      <div class="card bar"><h3>資訊來源分散</h3><p>新聞、財報、行情與觀點散在不同網站。</p></div>
+      <div class="card bar"><h3>結論難追溯</h3><p>不知道分析依據、時間與風險是否完整。</p></div>
+    </div>
+    <h2>新手目前從哪裡取得投資資訊？（問卷，可複選）</h2>
+    <div class="bars">
+      <div class="row"><span>社群媒體</span><div class="b" style="width:100%"></div><span class="n">15</span></div>
+      <div class="row"><span>親友建議</span><div class="b" style="width:93%"></div><span class="n">14</span></div>
+      <div class="row"><span>YouTube 財經</span><div class="b" style="width:87%"></div><span class="n">13</span></div>
+      <div class="row"><span>新聞網站</span><div class="b" style="width:73%"></div><span class="n">11</span></div>
+      <div class="row"><span>券商研究報告</span><div class="b" style="width:60%"></div><span class="n">9</span></div>
+      <div class="row"><span>App 推播</span><div class="b" style="width:27%"></div><span class="n">4</span></div>
+    </div>
+    <div class="card dark" style="margin-top:12px"><h3>痛點結論</h3><p>超過一半的新手靠社群與親友做決策，來源難以追溯；缺的是能「看得懂、找得到、查得到」的研究流程。</p></div>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>3 / 15</span></div>
+</section>
+
+<!-- 4 需求調查 -->
+<section class="page">
+  <div class="head"><div class="kicker">03 / RESEARCH</div><h1>需求調查方法與關鍵發現</h1><p>匿名線上問卷（Level 1 需求驗證），共 28 份有效回覆</p></div>
+  <div class="body" style="--z:1.45">
+    <p>方法：以 Kano 模型分析 5 項功能的需求類型（每項設計「有／沒有」正反雙問），並以阻力分析整理換用新工具的猶豫原因。</p>
+    <table style="margin-top:8px">
+      <tr><th>功能</th><th>主要分類</th><th>加分度</th><th>缺少時扣分</th></tr>
+      <tr><td>風險監控／異常提醒</td><td>期望需求</td><td>0.68</td><td>-0.43</td></tr>
+      <tr><td>推薦理由解釋</td><td>期望需求</td><td>0.68</td><td>-0.36</td></tr>
+      <tr><td>知識補充（新手教育）</td><td>無差別（魅力需求緊追）</td><td>0.54</td><td>-0.32</td></tr>
+      <tr><td>新聞快報</td><td>無差別</td><td>0.46</td><td>-0.25</td></tr>
+      <tr><td>AI 選股建議</td><td>無差別</td><td>0.44</td><td>-0.11</td></tr>
+    </table>
+    <p style="margin-top:10px"><b>發現 1｜新手要的不是結論，而是理由與風險提醒：</b>最強的期望需求是「推薦理由解釋」與「風險監控」，單給選股建議反而最弱。</p>
+    <div class="grid2" style="margin-top:10px;align-items:start">
+      <div>
+        <h2 style="margin-top:0">換用新工具的阻力（阻力分析）</h2>
+        <div class="bars">
+          <div class="row"><span>習慣的力量</span><div class="b" style="width:100%"></div><span class="n">10</span></div>
+          <div class="row"><span>不確定性</span><div class="b" style="width:100%"></div><span class="n">10</span></div>
+          <div class="row"><span>利益衝突</span><div class="b" style="width:20%"></div><span class="n">2</span></div>
+          <div class="row"><span>沒有特別猶豫</span><div class="b" style="width:60%"></div><span class="n">6</span></div>
+        </div>
+      </div>
+      <div class="card bar"><h3>發現 2｜重點</h3><p>習慣與不確定性合計占 71%。新工具必須讓人「看得出為什麼更好」：每個結論附來源、日期與白話解說。</p></div>
+    </div>
+    <div class="card dark" style="margin-top:12px"><h3>決賽對應</h3><p>兩項期望需求都已落地：<b>推薦理由</b>→ 每檔選股附理由、白話說明與走勢／波動／回撤；<b>風險監控</b>→ 追蹤股票單日漲跌超過 7%、距半年高點回落超過自訂提醒線時，在網頁通知。</p></div>
+    <p class="muted small" style="margin-top:8px">＊樣本數 28，分類為初步結果；部分功能票數接近，不宜過度推論。</p>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>4 / 15</span></div>
+</section>
+
+<!-- 5 解決方案 -->
+<section class="page">
+  <div class="head"><div class="kicker">04 / SOLUTION</div><h1>解決方案與核心價值</h1><p>不是替你選股，而是陪你學會選股</p></div>
+  <div class="body" style="--z:1.45">
+    <div class="grid4">
+      <div class="stat" style="text-align:left;padding:11px"><b>01</b><span><strong style="color:#fff;font-size:10px">自然語言輸入</strong><br>一句話描述偏好與條件</span></div>
+      <div class="stat" style="text-align:left;padding:11px"><b>02</b><span><strong style="color:#fff;font-size:10px">Agent 任務拆解</strong><br>規劃資料查找、篩選與檢核，先給使用者確認</span></div>
+      <div class="stat" style="text-align:left;padding:11px"><b>03</b><span><strong style="color:#fff;font-size:10px">官方資料與計算</strong><br>程式依官方資料計算，不交給模型</span></div>
+      <div class="stat" style="text-align:left;padding:11px"><b>04</b><span><strong style="color:#fff;font-size:10px">白話解說＋追蹤</strong><br>逐句檢核後呈現，並可持續追蹤與通知</span></div>
+    </div>
+    <h2>功能地圖：每個頁面只做一件事（<span class="tag t-new">決賽新增</span> 為初賽後加入）</h2>
+    <table>
+      <tr><th style="width:24%">頁面</th><th>新手可以做什麼</th></tr>
+      <tr><td class="k">智慧選股</td><td>一句話找股票或 ETF；每檔附理由、白話說明，<span class="hl">卡片加上近 6 個月走勢、波動、最大回撤</span></td></tr>
+      <tr><td class="k">AI 標的研究</td><td>研究前確認問題；產出報告、風險、失效條件與後續觀察條件，每步 trace 可回看</td></tr>
+      <tr><td class="k">我的追蹤 / 公告與事件</td><td>收藏、送去研究；追蹤股票的新公告與大漲大跌在鈴鐺通知，<span class="hl">公告可交給助手白話解釋</span></td></tr>
+      <tr><td class="k">股票比較 <span class="tag t-new">新增</span></td><td>同一組標準並排比較；ETF 可看成份股與重疊程度</td></tr>
+      <tr><td class="k">我的投資足跡 <span class="tag t-new">新增</span></td><td>研究與選股歷程、三段回饋、學習徽章、AI 查核紀錄、離目標還有多遠試算</td></tr>
+      <tr><td class="k">ESG 專區 <span class="tag t-new">新增</span></td><td>上市櫃公司自行申報的 9 個 ESG 揭露主題與是否經第三方驗證；只呈現揭露，不評分</td></tr>
+      <tr><td class="k">學習專區 / 新手導覽</td><td>名詞查找、常見問題、閱讀指南；<span class="hl">主要頁面有逐步高亮的導覽</span></td></tr>
+      <tr><td class="k">PINWISE 助手</td><td>自由提問；會接續上一題的標的，數字回答經核對才顯示</td></tr>
+      <tr><td class="k">資料與證據中心 / 市場總覽</td><td>查看每個資料來源的狀態、日期與授權</td></tr>
+    </table>
+    <div class="card dark" style="margin-top:11px"><h3>核心價值</h3><p>教育型 Agent：結果之外，同時解釋「這個數字代表什麼、該留意什麼」；做不到就直說，不補上看似合理的數字。</p></div>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>5 / 15</span></div>
+</section>
+
+<!-- 6 Agentic -->
+<section class="page">
+  <div class="head"><div class="kicker">05 / AGENTIC DESIGN</div><h1>Agentic AI 設計與必要性</h1><p>模型負責理解與解說，程式負責資料與計算</p></div>
+  <div class="body" style="--z:1.12">
+    <h2>為什麼一定要用 Agent？</h2>
+    <table>
+      <tr><th style="width:22%">做法</th><th>能做到</th><th style="width:32%">做不到</th></tr>
+      <tr><td class="k">傳統條件選股網站</td><td>條件篩選、圖表</td><td>聽不懂一句話需求，也不解釋「為什麼」</td></tr>
+      <tr><td class="k">一般 AI 聊天機器人</td><td>自然語言對話</td><td>數字可能幻覺、無官方出處、無法真正篩選全市場</td></tr>
+      <tr><td class="k">PINWISE Agent</td><td>理解→規劃→呼叫官方資料→程式計算→檢核→解說，依中間結果放寬或改走備援</td><td>刻意不下單、不給買賣指令</td></tr>
+    </table>
+    <h2>AI 選股 Agent 五步驟</h2>
+    <img class="fig" src="img/p5_0.png" alt="AI 選股 Agent 五步驟">
+    <h2>AI 標的研究：9 個角色分工（實際 trace 統計）</h2>
+    <div class="flow g9"><div class="step"><b>① Research</b><span>理解問題</span></div><div class="step"><b>② Planning</b><span>規劃步驟</span></div><div class="step"><b>③ Tool</b><span>選擇白名單工具</span></div><div class="step"><b>④ Data</b><span>呼叫官方資料</span></div><div class="step"><b>⑤ Calculation</b><span>程式計算指標</span></div><div class="step"><b>⑥ Evidence</b><span>整理證據</span></div><div class="step ai"><b>⑦ Gemini</b><span>分析與白話</span></div><div class="step"><b>⑧ Validation</b><span>逐句檢核</span></div><div class="step"><b>⑨ Report</b><span>保存報告</span></div></div>
+    <p class="muted small" style="margin-top:5px">30 次真實研究共寫入 848 筆事件；每步記錄來源、狀態、耗時與資料日期，畫面上即時顯示並可回看。</p>
+    <div class="grid2" style="margin-top:9px">
+      <div class="card bar"><h3>目標導向與任務分解</h3><p>一句話拆成條件、資料、篩選、理由、解說</p></div>
+      <div class="card bar"><h3>工具調用</h3><p>官方資料與計算工具皆走白名單；模型不能新增來源或代號</p></div>
+      <div class="card bar"><h3>狀態管理與動態調整</h3><p>每步寫入 trace；查無結果放寬、失敗改用備援；助手記得上一題標的</p></div>
+      <div class="card bar"><h3>權限與風險控制</h3><p>研究前人工確認、可暫停取消；數值範圍限制、逐句檢核、額度與限流</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>6 / 15</span></div>
+</section>
+
+<!-- 7 互動 -->
+<section class="page">
+  <div class="head"><div class="kicker">06 / INTERACTION</div><h1>Agent 與使用者的互動</h1><p>回應初賽意見：不只在背後查資料，每一步都讓使用者看得到、改得了、喊得停</p></div>
+  <div class="body" style="--z:1.45">
+    <h2>一次研究中的人機互動流程</h2>
+    <div class="flow">
+      <div class="step user"><b>① 設定偏好</b><span>6 題問卷：經驗、期間、風險、目標、說明方式、預估投入</span><i class="pill p-user">使用者</i></div><div class="arr">→</div>
+      <div class="step ai"><b>② 理解並確認</b><span>「我理解你想研究…」先給使用者確認再執行</span><i class="pill p-ai">Agent＋使用者</i></div><div class="arr">→</div>
+      <div class="step"><b>③ 執行可控</b><span>即時顯示每一步；可暫停、繼續、取消</span><i class="pill p-code">Agent</i></div><div class="arr">→</div>
+      <div class="step ai"><b>④ 個人化解說</b><span>標示「已參考你的偏好」，依偏好調整深度</span><i class="pill p-ai">Agent</i></div><div class="arr">→</div>
+      <div class="step user"><b>⑤ 回饋與追蹤</b><span>有用／還好／很糟＋文字；一鍵加入追蹤</span><i class="pill p-user">使用者</i></div>
+    </div>
+    <h2>各功能中的互動設計</h2>
+    <table>
+      <tr><th style="width:20%">功能</th><th>使用者做什麼</th><th>Agent 怎麼回應</th></tr>
+      <tr><td class="k">智慧選股</td><td>一句白話：「想存股領股息、不要波動太大」</td><td>列出 AI 理解的條件與篩選漏斗；做不到的條件直說；結果附理由與白話</td></tr>
+      <tr><td class="k">AI 標的研究</td><td>確認問題、隨時暫停或取消</td><td>即時顯示 9 個角色的進度；完成時通知；產出可一鍵追蹤的觀察條件</td></tr>
+      <tr><td class="k">PINWISE 助手</td><td>連續追問：「0056 殖利率？」「那跟 0050 比呢？」</td><td>記得上一題標的；錯字與同音字依原意理解；數字經核對才顯示</td></tr>
+      <tr><td class="k">公告與事件</td><td>點「詢問助手」</td><td>依公告內容白話解釋代表什麼、該留意什麼</td></tr>
+      <tr><td class="k">追蹤與通知</td><td>設定回落提醒線（10%／15%／20%）</td><td>網頁開啟時每 10 分鐘檢查，大漲大跌、新公告、資料異常在鈴鐺通知</td></tr>
+      <tr><td class="k">我的投資足跡</td><td>對回答給三段回饋、寫意見</td><td>回饋寫入 AI 查核紀錄；累積學習徽章與歷程</td></tr>
+    </table>
+    <div class="card dark" style="margin-top:11px"><h3>設計原則：Agent 負責研究與解釋，人負責決定</h3><p>Agent 主動規劃與執行，但關鍵節點（要研究什麼、要不要繼續、要不要追蹤）都交回使用者；系統不會替使用者下單或給出買賣指令。</p></div>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>7 / 15</span></div>
+</section>
+
+<!-- 8 架構 -->
+<section class="page">
+  <div class="head"><div class="kicker">07 / ARCHITECTURE</div><h1>系統架構與 API 資料來源</h1><p>Vue 前端 × FastAPI 後端 × 官方資料工具 × PostgreSQL</p></div>
+  <div class="body" style="--z:1.3">
+    <img class="fig" src="img/p6_0.png" alt="系統架構">
+    <table style="margin-top:10px">
+      <tr><th style="width:27%">來源</th><th>內容</th><th style="width:25%">規模／更新</th></tr>
+      <tr><td class="k">TWSE／TPEx OpenAPI</td><td>上市櫃日行情（含 ETF）</td><td>2,394 檔／每交易日</td></tr>
+      <tr><td class="k">官方估值與財務</td><td>本益比、殖利率、月營收年增、EPS</td><td>1,980 家／每日至每季</td></tr>
+      <tr><td class="k">MOPS（經 TWSE／TPEx）</td><td>公司資料、重大訊息、法說</td><td>上市櫃／每日</td></tr>
+      <tr><td class="k">FinMind</td><td>歷史日價（K 線、報酬、波動）</td><td>依查詢／每交易日</td></tr>
+      <tr><td class="k">ESG 揭露 <span class="tag t-new">新增</span></td><td>TWSE／TPEx 公司自行申報的 9 個 ESG 主題</td><td>上市櫃／年度</td></tr>
+      <tr><td class="k">ETF 成份股 <span class="tag t-new">新增</span></td><td>8 家投信公開揭露的持股與權重</td><td>約 113 檔／每日</td></tr>
+      <tr><td class="k">Google Gemini</td><td>理解需求、白話解說（非證據來源）</td><td>3.5 Flash-Lite</td></tr>
+    </table>
+    <div class="card dark" style="margin-top:10px"><h3>部署</h3><p>後端同時提供打包後的前端，一個網址即可使用；以公開網址供評審與使用者試用，金鑰只存在伺服器端設定，不進程式碼庫。</p></div>
+    <p class="muted small" style="margin-top:7px">資料品質：每筆保留來源與資料日期並標示「非即時」；缺值標示「未取得」不以估計補上；殖利率 &gt;15% 視為異常、成交金額 &lt;1,000 萬元視為冷門股並排除。</p>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>8 / 15</span></div>
+</section>
+
+<!-- 9 即時性 -->
+<section class="page">
+  <div class="head"><div class="kicker">08 / DATA FRESHNESS</div><h1>資料即時性處理方式</h1><p>回應初賽意見：用的是官方日資料，所以每個數字都誠實標示「多新」</p></div>
+  <div class="body" style="--z:1.45">
+    <h2>各來源的更新頻率與快取</h2>
+    <table>
+      <tr><th style="width:23%">資料</th><th style="width:20%">官方更新頻率</th><th style="width:19%">系統快取</th><th>畫面上怎麼標示</th></tr>
+      <tr><td class="k">日行情（收盤）</td><td>每交易日收盤後</td><td>5 分鐘</td><td>「日收盤 52.3 · 2026-11-10」並註明非即時</td></tr>
+      <tr><td class="k">估值與財務</td><td>每日至每季</td><td>30 分鐘</td><td>附資料期間，例如「9 月營收年增」</td></tr>
+      <tr><td class="k">重大訊息／公告</td><td>每日</td><td>依請求節流</td><td>公告日期；追蹤股票網頁開啟時每 10 分鐘檢查</td></tr>
+      <tr><td class="k">公司基本資料</td><td>不定期</td><td>12 小時</td><td>取得失敗時改用上次成功的名單</td></tr>
+      <tr><td class="k">ETF 成份股</td><td>投信每日揭露</td><td>12 小時</td><td>投信名稱、資料日期與原始連結</td></tr>
+      <tr><td class="k">ESG 揭露</td><td>年度</td><td>12 小時</td><td>報告年度與是否經第三方驗證</td></tr>
+    </table>
+    <h2>三個原則</h2>
+    <div class="grid3">
+      <div class="card bar"><h3>不冒充即時</h3><p>日資料一律顯示資料日期，不稱為即時價；盤中價格不在服務範圍。</p></div>
+      <div class="card bar"><h3>不以舊補新</h3><p>來源逾時或日期較舊時，標示缺漏或實際日期，不拿舊價冒充最新。</p></div>
+      <div class="card bar"><h3>缺值就說缺</h3><p>取不到的欄位顯示「未取得」，不以估計或示範資料補上。</p></div>
+    </div>
+    <div class="card dark" style="margin-top:11px"><h3>為什麼不用盤中即時行情？</h3><p>目標使用者是做中長期判斷的新手，問卷顯示他們需要的是「理由與風險」而非秒級報價；使用官方開放資料也確保授權清楚、可追溯。來源狀態集中在「資料與證據中心」，官方資料無法取得時會在鈴鐺通知。</p></div>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>9 / 15</span></div>
+</section>
+
+<!-- 10 原型 -->
+<section class="page">
+  <div class="head"><div class="kicker">09 / PROTOTYPE</div><h1>核心功能與原型展示</h1><p>真實官方資料 × 真實 Gemini 實測</p></div>
+  <div class="body" style="--z:1.4">
+    <h2>① 智慧選股篩選漏斗（2026-10-14 實測）</h2>
+    <p>輸入：「我是新手，想找配息穩定、本益比不要太高的股票」<br>AI 理解：個股、殖利率 ≥ 4%、本益比 ≤ 15 倍、低波動</p>
+    <p style="font-weight:900;font-size:10.5px;margin-top:4px">2,394 → 個股 2,004 → 殖利率 582 → 本益比 402 → 成交金額 167 → 排除異常 164 → 計算波動 30 → 低波動 10</p>
+    <table style="margin-top:6px">
+      <tr><th>結果（前 3 檔）</th><th>殖利率</th><th>本益比</th><th>年化波動</th></tr>
+      <tr><td>2387 精元</td><td>11.1%</td><td>12.1 倍</td><td>20.75%</td></tr>
+      <tr><td>2731 雄獅</td><td>8.92%</td><td>8.83 倍</td><td>20.99%</td></tr>
+      <tr><td>9927 泰銘</td><td>8.18%</td><td>10.27 倍</td><td>16.75%</td></tr>
+    </table>
+    <h2>② 決賽版選股卡片（2026-11-10 實測）</h2>
+    <table>
+      <tr><th style="width:18%">標的</th><th>近 6 月報酬</th><th>年化波動</th><th>最大回撤</th><th style="width:38%">卡片上另外顯示</th></tr>
+      <tr><td>2330 台積電</td><td>-0.22%</td><td>31.99%</td><td>-17.41%</td><td>殖利率 0.98%、本益比 25.91 倍、9 月營收年增 +54.65%</td></tr>
+      <tr><td>0056 元大高股息</td><td>+16.61%</td><td>28.5%</td><td>-16.26%</td><td>前三大成份股：南亞 9.88%、華南金 4.64%、中信金 4.29%</td></tr>
+    </table>
+    <p class="muted small" style="margin-top:4px">每個數字旁有 ⓘ 白話解釋，並附一句總結，例如「近 6 個月漲 16.61%，波動中等，期間最多曾下跌 16.26%。」</p>
+    <h2>③ AI 標的研究（2330）</h2>
+    <p>研究前確認問題 → 9 個角色依序執行並即時顯示 → 摘要回答成長動能與風險，首次出現的名詞附白話 → 產出 3 項失效條件與觀察條件並可一鍵追蹤；輸出檢核 0 句被移除，每步 trace 可回看。</p>
+    <h2>④ ESG 專區與股票比較</h2>
+    <p>ESG：依 E／S／G 列出溫室氣體、能源、水資源、董事會等 9 個主題的揭露數字與驗證情況，可一次看追蹤清單的摘要。比較：同一組標準並排，ETF 可比成份股重疊。</p>
+    <p class="muted small" style="margin-top:8px">＊個股僅為功能示範，不構成投資建議。</p>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>10 / 15</span></div>
+</section>
+
+<!-- 11 治理 -->
+<section class="page">
+  <div class="head"><div class="kicker">10 / GOVERNANCE</div><h1>安全治理與風險控制</h1><p>Agent 負責研究與解釋，人負責決定</p></div>
+  <div class="body" style="--z:1.45">
+    <table>
+      <tr><th style="width:20%">風險</th><th>控制措施</th></tr>
+      <tr><td class="k">AI 幻覺／數字錯誤</td><td>數字由程式依官方資料計算；逐句核對數字與網址（含中文數字、單位換算），對不上只移除該句並記錄</td></tr>
+      <tr><td class="k">誤導新手</td><td>不用「買進／賣出」指令；不給唯一合理價、進場時機與漲跌預測；排除冷門股與異常殖利率；槓桿／反向 ETF 警示</td></tr>
+      <tr><td class="k">失控的自動執行 <span class="tag t-new">新增</span></td><td>研究前由使用者確認；執行中可暫停、繼續、取消；同一使用者同時只能跑 1 個研究</td></tr>
+      <tr><td class="k">看不懂而誤用</td><td>每個數字附 ⓘ 與一句白話；輸入錯誤時轉介正確功能</td></tr>
+      <tr><td class="k">提示注入</td><td>新聞與網頁內容只當資料；工具白名單；模型不能新增來源網址或股票代號</td></tr>
+      <tr><td class="k">個資與帳號</td><td>不收集真實姓名；密碼 scrypt 加鹽雜湊；token 只存雜湊、30 天到期；每分鐘 10 次嘗試上限；<span class="hl">回饋文字存檔前遮蔽 email／手機／身分證</span></td></tr>
+      <tr><td class="k">公開展示隔離 <span class="tag t-new">新增</span></td><td>每位訪客取得後端簽發的短效憑證（4 小時），研究、追蹤與對話各自獨立，互相看不到；限定允許的網址來源</td></tr>
+      <tr><td class="k">金鑰與濫用</td><td>金鑰只在後端；每分鐘限流；Gemini 每日呼叫與 token 上限；額度用完時在鈴鐺通知</td></tr>
+      <tr><td class="k">外部服務失敗</td><td>Gemini 500／503 自動重試一次，429 不重試；仍失敗就明確顯示失敗步驟與原因，可重試，不以假答案頂替</td></tr>
+      <tr><td class="k">可追溯</td><td>每次研究保存每步工具、輸入輸出、耗時與資料日期；使用者回饋進入 AI 查核紀錄</td></tr>
+      <tr><td class="k">法規</td><td>定位為投資教育與研究輔助，附免責聲明</td></tr>
+    </table>
+    <div class="grid2" style="margin-top:11px">
+      <div class="card dark"><h3>設計原則</h3><p>AI 只負責「理解需求」與「白話解說」，不負責數字；AI 寫出的每一句都要能對應到證據才會顯示。系統寧可說「目前做不到」或「資料未取得」。</p></div>
+      <div class="card bar"><h3>安全邊界</h3><p>研究參考用途；不涉及券商帳戶授權、代操或真實交易執行。</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>11 / 15</span></div>
+</section>
+
+<!-- 12 評測 -->
+<section class="page">
+  <div class="head"><div class="kicker">11 / EVALUATION</div><h1>評測指標與驗證</h1><p>可重現的測試 × 真實執行紀錄 × 失敗情境</p></div>
+  <div class="body" style="--z:1.42">
+    <div class="grid4">
+      <div class="stat"><b>227</b><span>後端自動化測試<br>（初賽 153）</span></div>
+      <div class="stat"><b>30</b><span>次真實研究執行<br>10/14–11/12</span></div>
+      <div class="stat"><b>9.7 秒</b><span>研究完成時間<br>中位數（最長 16.3 秒）</span></div>
+      <div class="stat"><b>5,068</b><span>tokens／次<br>中位數</span></div>
+    </div>
+    <h2>指標：初賽目標 vs 決賽實測</h2>
+    <table>
+      <tr><th style="width:22%">指標</th><th style="width:22%">初賽目標</th><th>決賽實測</th></tr>
+      <tr><td class="k">回應時間</td><td>研究 &lt; 60 秒</td><td>21 次完成的研究：中位數 9.7 秒，最長 16.3 秒 ✅</td></tr>
+      <tr><td class="k">單次研究成本</td><td>&lt; 10,000 tokens</td><td>中位數 5,068 tokens ✅；產業型問題較高（3 次超過 10,000，最高 20,824）</td></tr>
+      <tr><td class="k">數字可追溯率</td><td>≥ 98%</td><td>2330 研究 100%；數字由程式產生，解說逐句核對</td></tr>
+      <tr><td class="k">失敗情境處理</td><td>≥ 90%</td><td>9 次失敗全部明確告知原因：8 次外部 Gemini 錯誤、1 次不存在的代號（中止且不猜測）</td></tr>
+      <tr><td class="k">選股理由正確率</td><td>100%</td><td>理由由程式依實際數值產生（例如寫出實際波動數值）</td></tr>
+      <tr><td class="k">新手理解度</td><td>提升 ≥ 20%</td><td><span class="todo">【待填：試用前後測結果】</span></td></tr>
+    </table>
+    <h2>失敗情境測試</h2>
+    <table>
+      <tr><th style="width:34%">情境</th><th>系統行為</th></tr>
+      <tr><td>不存在的代號</td><td>中止並說明，不猜測公司</td></tr>
+      <tr><td>模型寫出無證據數字</td><td>只移除該句，其餘保留</td></tr>
+      <tr><td>Gemini 暫時無法服務（503）</td><td>自動重試一次；仍失敗則顯示失敗步驟並可重試</td></tr>
+      <tr><td>Gemini 額度用盡</td><td>選股改用規則解析並告知；鈴鐺通知額度已用完</td></tr>
+      <tr><td>來源逾時或日期較舊</td><td>標示缺漏或資料日期，不以舊價冒充最新</td></tr>
+    </table>
+    <p class="muted small" style="margin-top:7px">＊實測數據取自系統資料庫中的研究紀錄（research_jobs、research_events），可在「資料與證據中心」與研究歷程回看。</p>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>12 / 15</span></div>
+</section>
+
+<!-- 13 場域回饋 -->
+<section class="page">
+  <div class="head"><div class="kicker">12 / FIELD FEEDBACK</div><h1>場域回饋與改善成果</h1><p>問卷開放題「你希望投資工具幫你什麼？」→ 歸納 8 類 → 對應功能</p></div>
+  <div class="body" style="--z:1.45">
+    <table>
+      <tr><th style="width:5%">#</th><th style="width:29%">使用者需求</th><th style="width:7%">次數</th><th>決賽版對應</th><th style="width:12%">狀態</th></tr>
+      <tr><td>1</td><td class="k">不知道買什麼，需要推薦與理由</td><td>7</td><td>選股理由、潛在風險、篩選邏輯說明；依偏好換算一張金額</td><td><span class="tag t-part">部分完成</span></td></tr>
+      <tr><td>2</td><td class="k">看不懂，需要新手教學</td><td>5</td><td>名詞查找、常見問題、閱讀指南、逐步導覽、「清楚易懂」說明風格</td><td><span class="tag t-done">已完成</span></td></tr>
+      <tr><td>3</td><td class="k">看不到資料，需要圖表</td><td>4</td><td>ETF 成份股（8 家投信）、近一年報酬、選股卡片 6 個月走勢</td><td><span class="tag t-done">已完成</span></td></tr>
+      <tr><td>4</td><td class="k">怕賠錢，需要風險提醒</td><td>3</td><td>波動、最大回撤、失效條件、回落提醒線、異常數字提示</td><td><span class="tag t-part">部分完成</span></td></tr>
+      <tr><td>5</td><td class="k">消息太慢，需要推播</td><td>2</td><td>網頁開啟時每 10 分鐘檢查新公告與大漲大跌</td><td><span class="tag t-part">部分完成</span></td></tr>
+      <tr><td>6</td><td class="k">想知道未來會漲還是跌</td><td>2</td><td>列出支持條件、反方風險與失效條件</td><td><span class="tag t-part">部分完成</span></td></tr>
+      <tr><td>7</td><td class="k">不知道離目標還多遠</td><td>1</td><td>投資足跡「離目標還有多遠」試算達成率與每月缺口</td><td><span class="tag t-done">已完成</span></td></tr>
+      <tr><td>8</td><td class="k">操作太複雜</td><td>1</td><td>多數頁面一頁不捲動、空狀態有下一步、新手導覽</td><td><span class="tag t-part">部分完成</span></td></tr>
+    </table>
+    <p class="muted small" style="margin-top:4px">另有 3 則超出工具範圍或無效回覆，不列入。</p>
+    <div class="grid2" style="margin-top:10px">
+      <div class="card bar"><h3>刻意不做（與定位一致）</h3><p>唯一合理價格、進場時機、漲跌預測：只提供觀察條件與風險，讓使用者自己判斷。這是「教判斷、不替你決定」的取捨，不是遺漏。</p></div>
+      <div class="card bar"><h3>尚待補強</h3><p>網頁關閉時的推播（手機／email）；智慧選股加入 ESG 條件；更多投信的 ETF 成份股；以使用者測試確認介面是否夠簡單。</p></div>
+    </div>
+    <div class="card dark" style="margin-top:10px"><h3>使用者試用（Level 3）</h3><p>已以公開網址部署供試用。<span class="todo">【待填：試用人數、前後測或滿意度結果】</span></p></div>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>13 / 15</span></div>
+</section>
+
+<!-- 14 擴散 -->
+<section class="page">
+  <div class="head"><div class="kicker">13 / SCALABILITY</div><h1>可擴散性與未來發展</h1><p>回應初賽意見：新資料是「多插一個模組」，不是重寫系統</p></div>
+  <div class="body" style="--z:1.35">
+    <h2>實例：ESG 專區如何加入</h2>
+    <div class="flow">
+      <div class="step"><b>新增 1 個資料模組</b><span>接 TWSE／TPEx ESG OpenAPI，沿用共用的重試、快取與節流</span></div><div class="arr">→</div>
+      <div class="step"><b>主題用設定表管理</b><span>9 個主題各一列；新增主題只要加一列，前端自動顯示</span></div><div class="arr">→</div>
+      <div class="step"><b>既有功能直接共用</b><span>追蹤清單一次看 ESG 摘要，可帶進助手繼續問</span></div>
+    </div>
+    <p class="muted small" style="margin-top:5px">選股、研究、追蹤的 Agent 程式都不需修改。ETF 成份股同樣以模組方式接上 8 家投信。</p>
+    <h2>技術上可擴充的方向</h2>
+    <div class="grid3">
+      <div class="card bar"><h3>新資料來源</h3><p>美股、法人籌碼、新聞：各自一個模組，進入相同的工具白名單與檢核。</p></div>
+      <div class="card bar"><h3>新 Agent 步驟</h3><p>研究流程由角色串接，可插入新聞情緒、產業比較等步驟。</p></div>
+      <div class="card bar"><h3>新介面</h3><p>前後端分離，後端 API 可共用給 App、LINE 機器人或券商系統。</p></div>
+    </div>
+    <h2>跨場域複用</h2>
+    <table>
+      <tr><th style="width:28%">對象</th><th>怎麼用</th></tr>
+      <tr><td class="k">券商新手引導</td><td>開戶後的新手教育模組，以 API 整合進券商 App</td></tr>
+      <tr><td class="k">大學理財課程／投資社團</td><td>教學工具：同一題讓學生比較「一般 LLM 回答」與「可追溯研究」</td></tr>
+      <tr><td class="k">ETF／基金、政府公開資料</td><td>同一套「程式算數字、AI 白話解說、逐句檢核」架構，套用到其他公開資料解讀</td></tr>
+    </table>
+    <h2>發展進度</h2>
+    <div class="flow">
+      <div class="step"><b>個人化情報</b><span>偏好問卷、標示已參考偏好</span><i class="tag t-done">已完成</i></div><div class="arr">→</div>
+      <div class="step"><b>主動送達</b><span>網頁開啟時通知；手機推播待做</span><i class="tag t-part">部分完成</i></div><div class="arr">→</div>
+      <div class="step"><b>行為回饋</b><span>三段回饋＋文字，寫入查核紀錄</span><i class="tag t-done">已完成</i></div><div class="arr">→</div>
+      <div class="step"><b>持續優化</b><span>依回饋調整解說深度與通知門檻</span><i class="tag t-plan">規劃中</i></div>
+    </div>
+    <div class="card dark" style="margin-top:11px"><h3>創新點</h3><p>教育型 Agent、模型與程式分工、誠實的 Agent（做不到就說明）、逐句事實檢核：一句錯不會整段作廢。</p></div>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>14 / 15</span></div>
+</section>
+
+<!-- 15 團隊 -->
+<section class="page">
+  <div class="head"><div class="kicker">14 / TEAM</div><h1>團隊分工與開發時程</h1><p>依賽事規定匿名，僅列角色</p></div>
+  <div class="body" style="--z:1.45">
+    <table>
+      <tr><th style="width:15%">期間</th><th>隊長</th><th>隊員 A</th></tr>
+      <tr><td class="k">9/20–9/26</td><td>討論＋設計問卷</td><td>討論＋設計問卷</td></tr>
+      <tr><td class="k">9/27–10/16</td><td>撰寫企畫書、串接資料庫＋驗證資安、製作影片</td><td>開發前端＋API、問卷分析、影片規劃</td></tr>
+      <tr><td class="k">10/17–11/13<br><span class="small muted">決賽準備</span></td><td><span class="todo">【請確認】</span>公開部署、Demo 影片、決賽簡報</td><td><span class="todo">【請確認】</span>前端改版、選股／研究／助手強化、ESG 與通知、使用者回饋彙整</td></tr>
+      <tr><td class="k">11/21</td><td colspan="2">決賽 Demo 與答詢</td></tr>
+    </table>
+    <h2>第三方資源</h2>
+    <table>
+      <tr><th style="width:32%">資源</th><th>用途</th><th style="width:30%">授權</th></tr>
+      <tr><td>Google Gemini API</td><td>理解需求、白話解說</td><td>Gemini API Terms</td></tr>
+      <tr><td>TWSE／TPEx OpenAPI</td><td>行情、估值、營收、EPS、ESG</td><td>政府資料開放授權</td></tr>
+      <tr><td>MOPS</td><td>公司資料、重大訊息、法說</td><td>官方使用條款</td></tr>
+      <tr><td>FinMind</td><td>歷史日價</td><td>FinMind 條款</td></tr>
+      <tr><td>各投信 ETF 持股揭露</td><td>ETF 成份股與權重</td><td>各投信網站使用條款</td></tr>
+      <tr><td>Vue 3／Vite</td><td>前端框架與建置</td><td>MIT</td></tr>
+      <tr><td>FastAPI／Uvicorn／HTTPX</td><td>後端框架與 HTTP</td><td>MIT／BSD-3</td></tr>
+      <tr><td>google-genai／PostgreSQL</td><td>Gemini SDK、資料庫</td><td>Apache-2.0／PostgreSQL License</td></tr>
+      <tr><td>ngrok</td><td>公開網址展示</td><td>ngrok 服務條款</td></tr>
+    </table>
+    <div class="card bar" style="margin-top:12px"><h3>AI 工具揭露</h3><p>開發期使用 AI 程式助理（Codex、Claude Code）協助程式、測試與文件；執行期 Gemini 只接收程式整理後的資料，輸出須通過檢核才會顯示。</p></div>
+  </div>
+  <div class="foot"><span>PINWISE｜B 組・投資情報與智慧選股 AI Agent</span><span>15 / 15</span></div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+# Local secrets and environment
+.env
+.env.*
+!backend/.env.example
+
+# Dependencies and generated Python files
+.venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Runtime data and caches
+backend/cache/
+backend/data/
+*.log
+*.db
+*.sqlite
+*.sqlite3
+
+# Credentials and local archives
+*.pem
+*.key
+*.p12
+*.pfx
+*.zip
+/deploy/netlify/
+
+# macOS
+.DS_Store

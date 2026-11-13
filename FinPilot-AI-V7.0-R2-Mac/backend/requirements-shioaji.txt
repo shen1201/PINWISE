@@ -1,0 +1,3 @@
+# 選配：只有在 SHIOAJI_ENABLED=true 時才需要安裝。
+-r requirements.lock
+shioaji>=1.7,<2
