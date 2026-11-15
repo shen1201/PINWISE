@@ -65,6 +65,8 @@ async function position() {
   hi.visible = tt.visible = false
   const s = step.value
   if (!s) return
+  // 手機版：先假設目標不在側邊欄，讓側邊欄收起來，避免蓋住說明框。
+  delete document.body.dataset.tourSidebar
   if (router.currentRoute.value.name !== s.page) await router.push(`/${s.page}`)
   await nextTick()
   await frame()
@@ -82,6 +84,11 @@ async function position() {
     tour.index = nextIndex
     return position()
   }
+  // 目標在側邊欄時，手機版才把側邊欄滑出來（CSS 依這個標記決定）。
+  if (el.closest('#sidebar')) {
+    document.body.dataset.tourSidebar = '1'
+    await frame()
+  }
   el.scrollIntoView({ block: 'nearest', behavior: 'auto' })
   await frame()
   if (current !== token || !el.isConnected) return
@@ -98,6 +105,7 @@ async function position() {
 
 function finish(mark = true) {
   token++
+  delete document.body.dataset.tourSidebar
   // 導覽途中切換過分頁時，結束後回到第一步的分頁（例如投資足跡回到「總覽」）。
   const resetTab = tour.steps[0]?.click
   if (resetTab) document.querySelector(resetTab)?.click()

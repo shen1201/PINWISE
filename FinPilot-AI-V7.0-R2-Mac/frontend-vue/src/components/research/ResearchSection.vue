@@ -624,6 +624,19 @@ function onToggle(event, key) {
 .rs-inline .rs-watch li{grid-template-columns:40px minmax(0,1fr) 18px 50px;font-size:13px;line-height:1.35}
 .rs-inline .rs-watch li :deep(.info-tip){width:16px;height:16px;font-size:11px}
 @media (max-width:900px){.rs-summary,.rs-inline .rs-summary{grid-template-columns:1fr;grid-template-rows:none;grid-template-areas:"c" "t" "s"}.rs-inline{height:auto}}
+/* 手機版高度改成依內容撐開：標題列可換行，指標格子不再用固定高度（container-type:size 會讓格子高度變 0、文字疊在一起） */
+@media (max-width:900px){
+  .rs-inline-head{flex-wrap:wrap;row-gap:6px}
+  .rs-inline-head h2{flex:none;white-space:nowrap}
+  .rs-inline-head .rs-feedback{margin-left:0;flex-basis:100%}
+  .rs-tiles-box .rs-box-head{flex-wrap:wrap;row-gap:6px}
+  .rs-tiles-box .rs-box-head h3{white-space:nowrap}
+  .rs-tiles-actions{flex-wrap:wrap;gap:6px 14px}
+  .rs-tiles,.rs-tiles.n-4,.rs-tiles.n-1,.rs-tiles.n-2{flex:none;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto}
+  .rs-tiles article{container-type:normal;min-height:76px;padding:10px 12px}
+  .rs-tiles strong{font-size:22px;overflow-wrap:anywhere}
+  .rs-tiles span{flex-wrap:wrap;line-height:1.35}
+}
 /* 風險與來源頁：內容延伸填滿視窗高度，底部只留呼吸空間 */
 .research-section-content[data-section="risk"],.research-section-content[data-section="evidence"]{display:flex;flex-direction:column;min-height:calc(min(100dvh - 36px, 760px) - 105px)!important}
 .rs-risk-grid{flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:stretch}
