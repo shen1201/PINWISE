@@ -1,8 +1,15 @@
-# FinPilot AI V7.0 R2（PINWISE）
+# PINWISE 程式（FinPilot AI V7.0 R2）
 
-以官方公開資料為核心的台股研究與智慧選股原型。前端是 Vue 3（`frontend-vue/`），後端是 Python / FastAPI（`backend/`）。所有金鑰只放在後端，不會進到瀏覽器。
+以官方公開資料為核心的台股研究與智慧選股原型。前端是 Vue 3（`frontend-vue/`），後端是 Python / FastAPI（`backend/`）。所有金鑰只放在後端，不會進到瀏覽器。專案介紹見 [repo 首頁 README](../README.md)。
 
 > 研究與競賽原型，不是投資建議。行情為最近可得的日資料，不是即時行情。
+
+## 啟動方式
+
+| 情境 | 做法 | 網址 |
+| --- | --- | --- |
+| 開發（前後端分開，改程式即時生效） | 下方「快速啟動」 | <http://localhost:5173> |
+| 公開展示（ngrok 對外） | 下方「公開展示（ngrok）」 | ngrok 固定網址 |
 
 ## 快速啟動
 
@@ -28,7 +35,38 @@ npm run dev
 
 開啟 <http://localhost:5173>。API 文件在 <http://127.0.0.1:8080/docs>。
 
-> 後端的 8080 只提供 API，不提供畫面，直接開會看到 404。`start.command` 也會開 8080，請改開 5173。
+> 開發時請開 5173。後端 8080 只有在執行過 `npm run build`（產生 `frontend-vue/dist/`）後才會一起提供畫面，而且是打包當下的版本，不會即時反映修改。
+
+## 公開展示（ngrok）
+
+讓外部的人（例如評審）用一個網址使用整個網站：後端在 8080 同時提供 API 與打包好的前端，再由 ngrok 把 8080 對外公開。
+
+**事前準備（只需一次）**
+
+1. 完成上方「快速啟動」的後端安裝與 `npm install`。
+2. 安裝 [ngrok](https://ngrok.com/download)，執行 `ngrok config add-authtoken <你的 token>`，並在 ngrok 後台申請一個免費固定網址。
+3. 在 `.env` 加上公開展示設定（數值請自行調整）：
+
+   ```ini
+   FINPILOT_DEMO_ACCESS_ENABLED=true
+   FINPILOT_DEMO_SESSION_SECRET=<一串夠長的隨機字串>
+   FINPILOT_CORS_ORIGINS=https://<你的固定網址>.ngrok-free.dev
+   FINPILOT_RATE_LIMIT_PER_MINUTE=180        # 每位訪客每分鐘 API 上限
+   FINPILOT_SYSTEM_RATE_LIMIT_PER_MINUTE=240 # 全站每分鐘 API 上限
+   FINPILOT_DAILY_GEMINI_CALL_LIMIT=40       # 全站每日 Gemini 呼叫上限（台灣時間 00:00 重置）
+   ```
+
+   開啟 `FINPILOT_DEMO_ACCESS_ENABLED` 後，每位訪客會自動取得短期工作階段，各自的紀錄互不相通。需要邀請碼才能進入時，再設定 `FINPILOT_DEMO_INVITE_TOKEN`。
+
+**啟動**
+
+把 `start_public_demo.cmd` 裡的 `PUBLIC_URL` 改成你的固定網址，然後雙擊執行。它會：
+
+1. 打包前端（`npm run build`）；
+2. 開一個視窗啟動後端（8080）；
+3. 開一個視窗啟動 ngrok 通道。
+
+兩個視窗都要保持開啟；關掉就停止對外服務。改了前端程式後要重新執行，網站才會更新。
 
 ## 設定（`.env`）
 
@@ -39,6 +77,7 @@ npm run dev
 | AI 研究與助手 | `GEMINI_API_KEY`（[申請](https://aistudio.google.com/app/apikey)） | AI 功能需要 |
 | 帳號登入、資料存資料庫 | `DATABASE_URL` | 選填，未設定時存在 `backend/data/` |
 | FinMind 歷史價 | `FINMIND_TOKEN` | 選填 |
+| 公開展示訪客模式 | `FINPILOT_DEMO_ACCESS_ENABLED` 等 | 只有對外展示需要，見上方「公開展示（ngrok）」 |
 | Shioaji 行情檢查 | `SHIOAJI_ENABLED` 等 | 選填，預設關閉 |
 
 改了 `.env` 要**重啟後端**才會生效。
@@ -48,6 +87,8 @@ npm run dev
 - **畫面打得開但資料都失敗**：後端沒啟動或不在 8080，先開 <http://127.0.0.1:8080/api/health> 確認。
 - **8080 被佔用**：有舊的後端沒關。Windows 可用 `Get-NetTCPConnection -LocalPort 8080 -State Listen` 找出程序並關閉。
 - **Gemini 429**：配額用完，等額度恢復，不要連續重送。
+- **公開網址打不開**：確認「PINWISE backend」與「PINWISE ngrok」兩個視窗都還開著；首次開啟出現 ngrok 提示頁時按「Visit Site」。
+- **公開網址的畫面是舊的**：重新執行 `start_public_demo.cmd`，讓它重新打包前端。
 
 ## 專案結構
 
@@ -58,7 +99,9 @@ npm run dev
 | `backend/app/` | FastAPI：`main.py` 路由、`services/` 研究與選股、`providers/` 資料來源、`security/` 存取控制、`storage/` 資料庫 |
 | `backend/tests/` | 後端測試 |
 | `qa/` | 後端 API 驗收腳本與假資料後端（見下方「測試」） |
-| `scripts/`、`netlify.toml`、`render.yaml` | 部署設定（見下方「部署」） |
+| `scripts/`、`netlify.toml`、`render.yaml` | 雲端部署設定（見下方「部署」） |
+| `start_public_demo.cmd` | Windows 一鍵公開展示（打包前端＋後端＋ngrok） |
+| `start.command` | macOS 一鍵啟動後端 |
 
 ## 測試
 
@@ -70,12 +113,14 @@ FINPILOT_SKIP_DOTENV=1 .venv/bin/python -m unittest discover -s backend/tests -v
 
 ## 部署
 
+目前對外展示使用上方的 ngrok 方式。以下雲端部署設定保留備用：
+
 - 後端：Render（`render.yaml`），啟動指令 `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`。金鑰放在平台的秘密設定，不要上傳 `.env`。
 - 前端：`scripts/build_netlify_live.sh` 還在複製已移除的舊版檔案，**目前會失敗**，要先改成打包 `frontend-vue/`。
 
 ## 舊版前端
 
-原生 JavaScript 舊版（根目錄 `index.html`、`js/`）已移除，可從 Git 取回：移除前最後一版是 commit `158044c`。
+原生 JavaScript 舊版（根目錄 `index.html`、`js/`）已移除，不在這個 repo 裡。
 
 ## 已整合功能
 
